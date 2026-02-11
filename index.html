@@ -116,7 +116,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   HERO — Dorsey restraint + Schaad fan
+   HERO
    ══════════════════════════════════════ */
 .hero {
   min-height: 100vh; padding: calc(var(--nav-h) + 48px) 0 64px;
@@ -152,7 +152,16 @@ img { max-width: 100%; display: block; }
 
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 
-/* Primary WhatsApp CTA */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.88rem; font-weight: 600; padding: 15px 28px;
+  background: var(--gold); color: var(--navy); border-radius: 12px;
+  transition: all 0.4s var(--spring);
+  box-shadow: 0 4px 16px rgba(232,184,48,0.25);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,48,0.35); }
+.btn-primary svg { width: 20px; height: 20px; }
+
 .btn-wa {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 0.88rem; font-weight: 600; padding: 15px 28px;
@@ -172,7 +181,6 @@ img { max-width: 100%; display: block; }
 }
 .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: transparent; }
 
-/* Fan visual */
 .hero-fan {
   display: flex; align-items: center; justify-content: center;
   position: relative;
@@ -183,18 +191,6 @@ img { max-width: 100%; display: block; }
 .fan-container { position: relative; width: min(400px, 38vw); height: min(400px, 38vw); }
 .fan-svg { width: 100%; height: 100%; filter: drop-shadow(0 16px 48px rgba(26,31,61,0.08)); }
 #fanBlades { transform-origin: 50% 50%; transform-box: view-box; }
-.fan-ring {
-  position: absolute; top: 50%; left: 50%; border-radius: 50%;
-  border: 1px solid var(--border); pointer-events: none;
-}
-.fan-ring-1 { width: 115%; height: 115%; transform: translate(-50%,-50%); opacity: 0.6; }
-.fan-ring-2 { width: 145%; height: 145%; transform: translate(-50%,-50%); opacity: 0.3; }
-.fan-hint {
-  position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-  font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.1em;
-  text-transform: uppercase; white-space: nowrap;
-  opacity: 0; animation: fadeUp 0.8s var(--smooth) 1.8s forwards;
-}
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
@@ -206,15 +202,16 @@ img { max-width: 100%; display: block; }
 @media (max-width: 480px) {
   .hero { min-height: auto; padding-bottom: 40px; }
   .hero-ctas { flex-direction: column; width: 100%; }
-  .btn-wa, .btn-secondary { width: 100%; justify-content: center; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
 }
 
 /* ══════════════════════════════════════
-   CLIENT STRIP — marquee
+   CLIENT STRIP — FIXED CAROUSEL
    ══════════════════════════════════════ */
 .clients {
-  padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 32px 0 24px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   overflow: hidden; position: relative;
+  display: flex; flex-direction: column; gap: 24px; align-items: center;
 }
 .clients::before, .clients::after {
   content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
@@ -222,22 +219,32 @@ img { max-width: 100%; display: block; }
 }
 .clients::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
 .clients::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+
 .clients-track {
-  display: flex; gap: 48px; align-items: center; width: max-content;
+  display: flex; 
+  align-items: center; 
+  width: max-content;
   animation: marquee 35s linear infinite;
 }
 .clients-track:hover { animation-play-state: paused; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
+
 .cl {
   font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted);
   white-space: nowrap; transition: color 0.3s;
+  margin-right: 48px;
 }
 .cl:hover { color: var(--navy); }
-.cl-stat {
-  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
-  color: var(--gold-dim); white-space: nowrap; letter-spacing: 0.04em;
+
+.clients-stat-row {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--text-soft);
+  text-align: center; z-index: 5;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  width: 100%; max-width: 600px;
 }
+.clients-stat-highlight { color: var(--gold-dim); font-weight: 600; font-size: 0.85rem; }
 
 /* ══════════════════════════════════════
    SECTION COMMON
@@ -262,16 +269,17 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   PRODUCTS — Schaad tilt cards
+   PRODUCTS
    ══════════════════════════════════════ */
 .products-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%), 1fr)); gap: 14px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
 }
 .p-card {
   background: var(--bg-pure); border-radius: var(--r); padding: 28px 24px;
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   transition: box-shadow 0.4s, border-color 0.3s;
   cursor: pointer; position: relative; overflow: hidden;
+  flex: 1 1 300px; max-width: 380px; text-align: left;
 }
 .p-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
@@ -297,7 +305,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 480px) { .products-grid { gap: 10px; } }
 
 /* ══════════════════════════════════════
-   HERITAGE — Dorsey editorial + slider
+   HERITAGE
    ══════════════════════════════════════ */
 .heritage { background: linear-gradient(180deg, var(--bg) 0%, rgba(168,197,184,0.05) 50%, var(--bg) 100%); }
 .heritage-grid {
@@ -372,7 +380,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   IMPACT — Zhao database table
+   IMPACT — Zhao database
    ══════════════════════════════════════ */
 .impact-section { background: var(--navy); color: var(--bg); }
 .impact-section .section-tag { color: rgba(250,250,248,0.4); }
@@ -380,7 +388,7 @@ img { max-width: 100%; display: block; }
 .impact-section .section-title { color: var(--bg); }
 .impact-section .section-desc { color: rgba(250,250,248,0.5); }
 
-.impact-summary { display: flex; gap: clamp(24px, 4vw, 56px); margin-bottom: 40px; flex-wrap: wrap; }
+.impact-summary { display: flex; gap: clamp(24px, 4vw, 56px); margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
 .impact-big { text-align: center; }
 .impact-num {
   font-family: var(--mono); font-size: clamp(2rem, 4vw, 2.8rem);
@@ -388,15 +396,14 @@ img { max-width: 100%; display: block; }
 }
 .impact-label { font-size: 0.68rem; color: rgba(250,250,248,0.4); margin-top: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
 
-/* Database table */
 .db-wrap {
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
-  border-radius: var(--r); overflow: hidden;
+  border-radius: var(--r); overflow: hidden; overflow-x: auto;
 }
 .db-head {
   display: flex; align-items: center; justify-content: space-between;
   padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255,255,255,0.02); min-width: 500px;
 }
 .db-head-title { font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
 .db-head-views { display: flex; gap: 2px; }
@@ -407,7 +414,7 @@ img { max-width: 100%; display: block; }
 .db-view-tab.active { background: rgba(255,255,255,0.08); color: var(--bg); }
 .db-view-tab:hover { background: rgba(255,255,255,0.04); }
 
-.db-table { width: 100%; border-collapse: collapse; }
+.db-table { width: 100%; border-collapse: collapse; min-width: 500px; }
 .db-table th {
   text-align: left; font-size: 0.68rem; font-weight: 500;
   color: rgba(250,250,248,0.35); padding: 8px 20px;
@@ -443,15 +450,16 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   TESTIMONIALS — stacked, not carousel
+   TESTIMONIALS
    ══════════════════════════════════════ */
 .testimonials-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px,100%), 1fr)); gap: 16px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
 }
 .t-card {
   background: var(--bg-pure); border-radius: var(--r); padding: 28px 24px;
   border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   transition: all 0.4s var(--spring);
+  flex: 1 1 300px; max-width: 480px; text-align: left;
 }
 .t-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .t-quote {
@@ -474,42 +482,64 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   CTA — Photo upload + form + WhatsApp
+   CTA — SYMMETRICAL & ALIGNED
    ══════════════════════════════════════ */
 .cta-section { padding: clamp(64px, 10vw, 100px) 0; }
 .cta-card {
   background: var(--bg-pure); border-radius: var(--r-lg); padding: clamp(32px, 5vw, 56px);
   border: 1px solid var(--border); box-shadow: var(--shadow-md);
-  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px);
+  display: block;
+}
+.cta-header {
+  text-align: left; margin-bottom: 40px;
 }
 .cta-title {
   font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 400; line-height: 1.2; margin-bottom: 12px;
 }
-.cta-text { font-size: 0.9rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 24px; }
+.cta-text {
+  font-size: 0.9rem; color: var(--text-soft); line-height: 1.7;
+  max-width: 600px; margin-bottom: 0;
+}
 
-/* Photo upload area */
+.cta-body {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px);
+  align-items: stretch;
+}
+
+/* Left Column */
+.cta-col-left {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+  height: 100%;
+}
 .cta-upload {
   border: 2px dashed var(--border-strong); border-radius: var(--r);
-  padding: 28px; text-align: center; margin-bottom: 20px;
+  padding: 32px 24px; text-align: center;
   transition: border-color 0.3s, background 0.3s; cursor: pointer;
+  flex-grow: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 320px; /* Ensures visual balance */
 }
 .cta-upload:hover { border-color: var(--gold); background: var(--gold-glow); }
-.cta-upload-icon { font-size: 1.8rem; margin-bottom: 8px; }
-.cta-upload-text { font-size: 0.82rem; color: var(--text-soft); }
+.cta-upload-icon { font-size: 2rem; margin-bottom: 12px; }
+.cta-upload-text { font-size: 0.85rem; color: var(--text-soft); }
 .cta-upload-text strong { color: var(--gold-dim); }
+
+.cta-left-bottom { margin-top: auto; }
 
 .cta-or {
   text-align: center; font-size: 0.72rem; color: var(--text-muted);
   text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
 }
 
+/* Button styles — MATCHED DIMENSIONS */
 .cta-wa-big {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; padding: 14px; font-size: 0.88rem; font-weight: 600;
   background: #25D366; color: white; border-radius: 12px;
   transition: all 0.4s var(--spring);
   box-shadow: 0 4px 16px rgba(37,211,102,0.2);
+  min-height: 54px; /* Fixed height for symmetry */
 }
 .cta-wa-big:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.3); }
 .cta-wa-big svg { width: 20px; height: 20px; fill: white; }
@@ -523,28 +553,70 @@ img { max-width: 100%; display: block; }
 }
 .cta-phones a:hover { color: var(--navy); }
 
-/* Form side */
-.cta-form { display: flex; flex-direction: column; gap: 10px; }
+/* Right Column: Form */
+.cta-form {
+  display: flex; flex-direction: column; gap: 14px; height: 100%;
+}
 .cta-form input, .cta-form select, .cta-form textarea {
   width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 0.85rem;
   background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px;
   color: var(--text); outline: none; transition: border-color 0.3s;
 }
 .cta-form input:focus, .cta-form select:focus, .cta-form textarea:focus { border-color: var(--gold); }
-.cta-form textarea { resize: vertical; min-height: 80px; }
+
+/* REVERTED: Auto-grow properties */
+.cta-form textarea {
+  resize: vertical; /* Allow resize */
+  min-height: 120px; /* Good default size */
+  flex-grow: 1; /* Fill available space in column */
+}
+
 .cta-form select { -webkit-appearance: none; }
-.cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Right Column Bottom Group */
+.cta-right-bottom {
+  margin-top: auto;
+}
+.cta-or-spacer {
+  height: 27px; margin-bottom: 16px; visibility: hidden;
+}
 .cta-submit {
   padding: 14px; width: 100%; font-size: 0.88rem; font-weight: 600;
-  background: var(--gold); color: var(--navy); border-radius: 10px;
+  background: var(--gold); color: var(--navy); border-radius: 12px;
   transition: all 0.4s var(--spring);
   box-shadow: 0 2px 10px rgba(232,184,48,0.2);
+  cursor: pointer;
+  min-height: 54px; /* Fixed height for symmetry */
+  display: flex; align-items: center; justify-content: center; /* Centering text */
 }
 .cta-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,184,48,0.3); }
 
+.cta-submit-note {
+  margin-top: 16px; text-align: center;
+  font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+/* MOBILE FIXES */
 @media (max-width: 900px) {
-  .cta-card { grid-template-columns: 1fr; }
+  /* Center align header text */
+  .section-title, .section-desc, .heritage-title, .heritage-text, .cta-header, .cta-title, .cta-text { 
+    text-align: center; 
+    margin-left: auto; margin-right: auto;
+  }
+  
+  /* Force tags to full width and center content */
+  .section-tag, .heritage-badge { 
+    display: flex; 
+    width: 100%; 
+    justify-content: center; 
+  }
+
+  .cta-body { grid-template-columns: 1fr; gap: 40px; }
   .cta-form-row { grid-template-columns: 1fr; }
+  .cta-upload { min-height: 220px; }
+  .cta-or-spacer { display: none; }
 }
 
 /* ══════════════════════════════════════
@@ -579,7 +651,10 @@ img { max-width: 100%; display: block; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 @media (max-width: 480px) {
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  /* Force footer elements to center on small mobile */
+  .footer-brand-name { justify-content: center; }
+  .footer-brand-desc { margin-left: auto; margin-right: auto; }
   .footer { padding-bottom: 100px; }
 }
 
@@ -632,7 +707,6 @@ img { max-width: 100%; display: block; }
 </head>
 <body>
 
-<!-- ══════ NAVIGATION ══════ -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
@@ -655,7 +729,6 @@ img { max-width: 100%; display: block; }
   </div>
 </nav>
 
-<!-- ══════ HERO ══════ -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -664,17 +737,15 @@ img { max-width: 100%; display: block; }
         <h1 class="hero-title">We engineer<br>how <em>air</em> moves.</h1>
         <p class="hero-sub">Ventilation, conditioning, and automation for heritage churches, Amazon warehouses, and every space that matters between.</p>
         <div class="hero-ctas">
-          <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20learning%20about%20your%20HVAC%20solutions." class="btn-wa" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            WhatsApp Us
+          <a href="#products" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            Explore Our Solutions
           </a>
           <a href="#heritage" class="btn-secondary">See Our Work</a>
         </div>
       </div>
       <div class="hero-fan">
         <div class="fan-container">
-          <div class="fan-ring fan-ring-1"></div>
-          <div class="fan-ring fan-ring-2"></div>
           <svg class="fan-svg" viewBox="0 0 500 500" fill="none">
             <g id="fanBlades">
               <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.78" transform="rotate(0 250 250)"/>
@@ -686,22 +757,24 @@ img { max-width: 100%; display: block; }
             <circle cx="250" cy="250" r="20" fill="var(--navy)"/>
             <circle cx="250" cy="250" r="7" fill="var(--gold)" opacity="0.9"/>
           </svg>
-          <div class="fan-hint">Move cursor to spin</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════ CLIENTS ══════ -->
 <section class="clients">
   <div class="clients-track" id="ct">
-    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span><span class="cl-stat">15,000+ MW Saved</span>
-    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span><span class="cl-stat">15,000+ MW Saved</span>
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span>
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span>
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span>
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span>
+  </div>
+  <div class="clients-stat-row">
+    <span class="clients-stat-highlight">15,000+ MW</span> of energy saved for our clients.
   </div>
 </section>
 
-<!-- ══════ PRODUCTS ══════ -->
 <section class="section" id="products">
   <div class="container">
     <div class="section-tag reveal">Solutions</div>
@@ -742,7 +815,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ══════ HERITAGE ══════ -->
 <section class="section heritage" id="heritage">
   <div class="container">
     <div class="heritage-grid">
@@ -778,7 +850,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ══════ IMPACT — Zhao database ══════ -->
 <section class="section impact-section" id="impact">
   <div class="container">
     <div class="section-tag reveal">Impact</div>
@@ -818,7 +889,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ══════ TESTIMONIALS — stacked ══════ -->
 <section class="section" id="testimonials">
   <div class="container">
     <div class="section-tag reveal">Voices</div>
@@ -861,47 +931,57 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ══════ CTA ══════ -->
 <section class="cta-section" id="contact">
   <div class="container">
     <div class="cta-card reveal">
-      <div>
-        <h2 class="cta-title">Tell us about<br>your <em>space.</em></h2>
-        <p class="cta-text">Snap a photo, describe what you need — we'll recommend the right solution within 24 hours. Or just WhatsApp us.</p>
-
-        <div class="cta-upload" onclick="document.getElementById('fileInput').click()">
-          <div class="cta-upload-icon">📸</div>
-          <div class="cta-upload-text"><strong>Tap to upload a photo</strong> of your space<br>or drag and drop here</div>
-          <input type="file" id="fileInput" accept="image/*" style="display:none">
-        </div>
-
-        <div class="cta-or">— or —</div>
-
-        <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20learning%20about%20your%20HVAC%20solutions." class="cta-wa-big" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="white"/></svg>
-          WhatsApp Us Your Space
-        </a>
-
-        <div class="cta-phones">
-          <a href="tel:+919819040201">+91 9819 040 201</a>
-          <a href="tel:+919011699749">+91 9011 699 749</a>
-        </div>
+      <div class="cta-header">
+        <h2 class="cta-title">Tell us about your <em>space.</em></h2>
+        <p class="cta-text">Snap a photo, describe what you need — we'll recommend the right solution within 24 hours.</p>
       </div>
-      <form class="cta-form" onsubmit="event.preventDefault()">
-        <div class="cta-form-row">
-          <input type="text" placeholder="Your name" required>
-          <input type="tel" placeholder="Phone number" required>
+
+      <div class="cta-body">
+        <div class="cta-col-left">
+          <div class="cta-upload" onclick="document.getElementById('fileInput').click()">
+            <div class="cta-upload-icon">📸</div>
+            <div class="cta-upload-text"><strong>Tap to upload a photo</strong> of your space<br>or drag and drop here</div>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+          </div>
+          
+          <div class="cta-left-bottom">
+            <div class="cta-or">— or —</div>
+            <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20learning%20about%20your%20HVAC%20solutions." class="cta-wa-big" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp Us Your Space
+            </a>
+            <div class="cta-phones">
+              <a href="tel:+919819040201">+91 9819 040 201</a>
+              <a href="tel:+919011699749">+91 9011 699 749</a>
+            </div>
+          </div>
         </div>
-        <select required><option value="" disabled selected>Type of space</option><option>Church / Place of Worship</option><option>Warehouse / Factory</option><option>Hotel / Hospitality</option><option>Retail / Showroom</option><option>Office / Commercial</option><option>School / Institution</option><option>Other</option></select>
-        <input type="text" placeholder="Approximate area (sq ft)">
-        <textarea placeholder="Tell us what you need..."></textarea>
-        <button type="submit" class="cta-submit">Get Free Assessment →</button>
-      </form>
+
+        <form class="cta-form" onsubmit="event.preventDefault()">
+          <div class="cta-form-row">
+            <input type="text" placeholder="Your name" required>
+            <input type="tel" placeholder="Phone number" required>
+          </div>
+          <select required><option value="" disabled selected>Type of space</option><option>Church / Place of Worship</option><option>Warehouse / Factory</option><option>Hotel / Hospitality</option><option>Retail / Showroom</option><option>Office / Commercial</option><option>School / Institution</option><option>Other</option></select>
+          <input type="text" placeholder="Approximate area (sq ft)">
+          <textarea placeholder="Tell us what you need..."></textarea>
+
+          <div class="cta-right-bottom">
+            <div class="cta-or-spacer"></div> <button type="submit" class="cta-submit">Get Free Assessment →</button>
+            <div class="cta-submit-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              We typically reply within 24 hours.
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -932,7 +1012,6 @@ img { max-width: 100%; display: block; }
   </div>
 </footer>
 
-<!-- ══════ STICKY MOBILE BAR ══════ -->
 <div class="mobile-bar">
   <div class="mobile-bar-inner">
     <a href="tel:+919819040201" class="mb-btn">
@@ -950,7 +1029,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ══════ DESKTOP WHATSAPP FLOAT ══════ -->
 <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20your%20HVAC%20solutions." class="wa-float" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
@@ -964,7 +1042,7 @@ window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY
 hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }));
 
-// ── Fan — cursor + scroll reactive ──
+// ── Fan — scroll reactive ──
 const blades = document.getElementById('fanBlades');
 blades.style.transformOrigin = '50% 50%';
 blades.style.transformBox = 'view-box';
@@ -1027,11 +1105,22 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
 // ── Counter animation ──
 function animNum(el) {
-  const t = +el.dataset.count, suffix = el.dataset.suffix || '+', dur = 1600, s = performance.now();
+  const t = +el.dataset.count;
+  const suffix = el.dataset.suffix || '+';
+  const dur = 2200; // Increased duration
+  const s = performance.now();
+  
   function u(n) {
-    const p = Math.min((n-s)/dur,1), e = 1-Math.pow(1-p,3);
-    el.textContent = Math.floor(e*t).toLocaleString() + (p>=1 ? suffix : '');
-    if (p<1) requestAnimationFrame(u);
+    let p = (n - s) / dur;
+    if (p > 1) p = 1;
+    
+    // Easing: Quintic out for glassier stop
+    const e = 1 - Math.pow(1 - p, 5); 
+    
+    // Constant Context: Add suffix always
+    el.textContent = Math.floor(e * t).toLocaleString() + suffix; 
+    
+    if (p < 1) requestAnimationFrame(u);
   }
   requestAnimationFrame(u);
 }
