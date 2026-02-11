@@ -269,7 +269,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ══════════════════════════════════════
-   PRODUCTS
+   PRODUCTS — OPTION B (6-Card)
    ══════════════════════════════════════ */
 .products-grid {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
@@ -301,6 +301,14 @@ img { max-width: 100%; display: block; }
   transition: gap 0.3s var(--spring);
 }
 .p-card-link:hover { gap: 8px; }
+
+/* Special Styling for Consultation Card */
+.p-card-service {
+  background: var(--navy); color: white; border-color: var(--navy-soft);
+}
+.p-card-service .p-card-name, .p-card-service .p-card-link { color: var(--gold); }
+.p-card-service .p-card-desc { color: rgba(255,255,255,0.7); }
+.p-card-service:hover { border-color: var(--gold); box-shadow: 0 12px 40px rgba(26,31,61,0.25); }
 
 @media (max-width: 480px) { .products-grid { gap: 10px; } }
 
@@ -788,32 +796,38 @@ img { max-width: 100%; display: block; }
       <div class="p-card reveal reveal-d1" data-tilt>
         <span class="p-card-icon">🌀</span>
         <h3 class="p-card-name">HVLS Fans</h3>
-        <p class="p-card-desc">8ft to 24ft fans that replace dozens of ceiling fans with one silent, elegant solution. Less than 0.25 W/sqft.</p>
-        <a href="#" class="p-card-link">Explore →</a>
+        <p class="p-card-desc">Featuring Torq, Viska, and ELAN series. 8ft to 24ft engineering masterpieces.</p>
+        <a href="#" class="p-card-link">View Series →</a>
       </div>
       <div class="p-card reveal reveal-d2" data-tilt>
-        <span class="p-card-icon">❄️</span>
-        <h3 class="p-card-name">Air Conditioning</h3>
-        <p class="p-card-desc">High-wall, ductable, cassette — designed for your space, your budget, and your aesthetic.</p>
+        <span class="p-card-icon">💨</span>
+        <h3 class="p-card-name">Ventilation & Exhaust</h3>
+        <p class="p-card-desc">Heavy-duty industrial fans and wall-mounted exhaust systems for manufacturing.</p>
         <a href="#" class="p-card-link">Explore →</a>
       </div>
       <div class="p-card reveal reveal-d3" data-tilt>
-        <span class="p-card-icon">💨</span>
-        <h3 class="p-card-name">Ventilation & Exhaust</h3>
-        <p class="p-card-desc">Mechanised ventilation, roof extractors, and aesthetic duct design for engineered airflow.</p>
-        <a href="#" class="p-card-link">Explore →</a>
+        <span class="p-card-icon">🌪️</span>
+        <h3 class="p-card-name">Precision Airflow</h3>
+        <p class="p-card-desc">Airius destratification and spot cooling technology for targeted thermal control.</p>
+        <a href="#" class="p-card-link">Learn More →</a>
       </div>
       <div class="p-card reveal reveal-d4" data-tilt>
+        <span class="p-card-icon">❄️</span>
+        <h3 class="p-card-name">Climate Control</h3>
+        <p class="p-card-desc">Air Handling Units (AHUs) integrated for complete temperature management.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+      <div class="p-card reveal reveal-d1" data-tilt>
         <span class="p-card-icon">☀️</span>
-        <h3 class="p-card-name">Solar & Hybrid</h3>
-        <p class="p-card-desc">Zero frontal investment. Hybrid panels cut AC compressor load by half. On-grid and off-grid.</p>
-        <a href="#" class="p-card-link">Explore →</a>
+        <h3 class="p-card-name">Energy Solutions</h3>
+        <p class="p-card-desc">Hybrid thermal solar panels that slash AC compressor loads by 50%.</p>
+        <a href="#" class="p-card-link">See Savings →</a>
       </div>
-      <div class="p-card reveal reveal-d4" data-tilt>
-        <span class="p-card-icon">🏗️</span>
-        <h3 class="p-card-name">Interior Design</h3>
-        <p class="p-card-desc">Architects, designers, and fit-out specialists. Handshake to handover.</p>
-        <a href="#" class="p-card-link">Explore →</a>
+      <div class="p-card reveal reveal-d2 p-card-service" data-tilt>
+        <span class="p-card-icon">📐</span>
+        <h3 class="p-card-name">Design & Consultation</h3>
+        <p class="p-card-desc">We simulate airflow dynamics before installation. Engineering, not just sales.</p>
+        <a href="#contact" class="p-card-link">Book Engineer →</a>
       </div>
     </div>
   </div>
