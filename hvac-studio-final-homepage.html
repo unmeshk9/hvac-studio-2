@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The HVAC Studio — India's Premier HVAC Engineering Studio | HVLS Fans, Air Conditioning, Ventilation</title>
+<meta name="description" content="India's only heritage HVLS installation experts. 25+ church installations, 15,000+ MW saved. HVLS fans, air conditioning, ventilation, solar energy. Trusted by Airport, Taj Hotels, Amazon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-pure: #FFFFFF;
+  --navy: #1A1F3D;
+  --navy-soft: #2A3058;
+  --gold: #E8B830;
+  --gold-dim: #D4A82A;
+  --gold-glow: rgba(232,184,48,0.15);
+  --eucalyptus: #A8C5B8;
+  --text: #1A1F3D;
+  --text-soft: #5A5E78;
+  --text-muted: #8E91A4;
+  --border: rgba(26,31,61,0.07);
+  --border-strong: rgba(26,31,61,0.12);
+  --shadow-sm: 0 1px 3px rgba(26,31,61,0.04);
+  --shadow-md: 0 6px 24px rgba(26,31,61,0.05);
+  --shadow-lg: 0 16px 48px rgba(26,31,61,0.07);
+  --shadow-xl: 0 24px 64px rgba(26,31,61,0.09);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-h: 68px;
+  --r: 16px;
+  --r-lg: 24px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+
+/* ══════════════════════════════════════
+   NAVIGATION — frosted, minimal
+   ══════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(250,250,248,0.6);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+}
+.nav.scrolled {
+  background: rgba(250,250,248,0.92);
+  border-color: var(--border);
+  box-shadow: 0 1px 8px rgba(26,31,61,0.04);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
+  letter-spacing: -0.01em; color: var(--navy);
+}
+.nav-logo span { font-weight: 300; }
+.nav-logo-mark {
+  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+  background: var(--navy); border-radius: 6px;
+}
+.nav-logo-mark svg { width: 16px; height: 16px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 500; color: var(--text-soft);
+  transition: color 0.2s; letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  font-size: 0.78rem; font-weight: 600; padding: 9px 20px;
+  background: var(--gold); color: var(--navy); border-radius: 8px;
+  transition: all 0.4s var(--spring);
+  box-shadow: 0 2px 8px rgba(232,184,48,0.2);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,184,48,0.3); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-hamburger span { width: 20px; height: 1.5px; background: var(--navy); transition: all 0.3s; display: block; }
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: flex; flex-direction: column;
+    position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: rgba(250,250,248,0.97); backdrop-filter: blur(20px);
+    padding: 16px clamp(20px, 5vw, 64px) 24px; gap: 0;
+    border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md);
+    transform: translateY(-110%); opacity: 0;
+    transition: transform 0.4s var(--smooth), opacity 0.3s;
+    pointer-events: none; z-index: 199;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-links a { display: block; padding: 14px 0; font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav-cta-desktop { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(3px,3px); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(3px,-3px); }
+}
+
+/* ══════════════════════════════════════
+   HERO — Dorsey restraint + Schaad fan
+   ══════════════════════════════════════ */
+.hero {
+  min-height: 100vh; padding: calc(var(--nav-h) + 48px) 0 64px;
+  display: flex; align-items: center;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+.hero-content { opacity: 0; animation: fadeUp 0.9s var(--smooth) 0.2s forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.hero-tag-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+.hero-title {
+  font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 4.8rem);
+  font-weight: 400; line-height: 1.08; letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.hero-title em { font-style: italic; font-weight: 500; }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem); font-weight: 400;
+  color: var(--text-soft); line-height: 1.7; max-width: 480px;
+  margin-bottom: 36px;
+}
+
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* Primary WhatsApp CTA */
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.88rem; font-weight: 600; padding: 15px 28px;
+  background: #25D366; color: white; border-radius: 12px;
+  transition: all 0.4s var(--spring);
+  box-shadow: 0 4px 16px rgba(37,211,102,0.25);
+}
+.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.35); }
+.btn-wa svg { width: 20px; height: 20px; fill: white; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; font-weight: 500; padding: 14px 24px;
+  background: var(--bg-pure); border: 1.5px solid var(--border-strong);
+  color: var(--navy); border-radius: 12px;
+  transition: all 0.4s var(--spring);
+}
+.btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+/* Fan visual */
+.hero-fan {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  opacity: 0; animation: scaleIn 1s var(--spring) 0.5s forwards;
+}
+@keyframes scaleIn { from { opacity:0; transform: scale(0.85); } to { opacity:1; transform: scale(1); } }
+
+.fan-container { position: relative; width: min(400px, 38vw); height: min(400px, 38vw); }
+.fan-svg { width: 100%; height: 100%; filter: drop-shadow(0 16px 48px rgba(26,31,61,0.08)); }
+#fanBlades { transform-origin: 50% 50%; transform-box: view-box; }
+.fan-ring {
+  position: absolute; top: 50%; left: 50%; border-radius: 50%;
+  border: 1px solid var(--border); pointer-events: none;
+}
+.fan-ring-1 { width: 115%; height: 115%; transform: translate(-50%,-50%); opacity: 0.6; }
+.fan-ring-2 { width: 145%; height: 145%; transform: translate(-50%,-50%); opacity: 0.3; }
+.fan-hint {
+  position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+  font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.1em;
+  text-transform: uppercase; white-space: nowrap;
+  opacity: 0; animation: fadeUp 0.8s var(--smooth) 1.8s forwards;
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-fan { order: -1; margin-bottom: 16px; }
+  .fan-container { width: min(260px, 60vw); height: min(260px, 60vw); }
+}
+@media (max-width: 480px) {
+  .hero { min-height: auto; padding-bottom: 40px; }
+  .hero-ctas { flex-direction: column; width: 100%; }
+  .btn-wa, .btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* ══════════════════════════════════════
+   CLIENT STRIP — marquee
+   ══════════════════════════════════════ */
+.clients {
+  padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  overflow: hidden; position: relative;
+}
+.clients::before, .clients::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+  pointer-events: none;
+}
+.clients::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+.clients::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+.clients-track {
+  display: flex; gap: 48px; align-items: center; width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.clients-track:hover { animation-play-state: paused; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.cl {
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted);
+  white-space: nowrap; transition: color 0.3s;
+}
+.cl:hover { color: var(--navy); }
+.cl-stat {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  color: var(--gold-dim); white-space: nowrap; letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════
+   SECTION COMMON
+   ══════════════════════════════════════ */
+.section { padding: clamp(64px, 10vw, 120px) 0; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.section-tag::before { content: ''; width: 20px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+.section-title {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-title em { font-style: italic; font-weight: 500; }
+.section-desc {
+  font-size: 0.92rem; color: var(--text-soft); line-height: 1.7;
+  max-width: 520px; margin-bottom: 40px;
+}
+
+/* ══════════════════════════════════════
+   PRODUCTS — Schaad tilt cards
+   ══════════════════════════════════════ */
+.products-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%), 1fr)); gap: 14px;
+}
+.p-card {
+  background: var(--bg-pure); border-radius: var(--r); padding: 28px 24px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.4s, border-color 0.3s;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.p-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s var(--smooth);
+}
+.p-card:hover { box-shadow: var(--shadow-lg); border-color: transparent; }
+.p-card:hover::before { transform: scaleX(1); }
+.p-card-icon {
+  font-size: 1.6rem; margin-bottom: 14px; display: block;
+  transition: transform 0.4s var(--spring);
+}
+.p-card:hover .p-card-icon { transform: scale(1.12) rotate(-4deg); }
+.p-card-name { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+.p-card-desc { font-size: 0.82rem; color: var(--text-soft); line-height: 1.6; margin-bottom: 14px; }
+.p-card-link {
+  font-size: 0.75rem; font-weight: 600; color: var(--gold-dim);
+  display: inline-flex; align-items: center; gap: 4px;
+  transition: gap 0.3s var(--spring);
+}
+.p-card-link:hover { gap: 8px; }
+
+@media (max-width: 480px) { .products-grid { gap: 10px; } }
+
+/* ══════════════════════════════════════
+   HERITAGE — Dorsey editorial + slider
+   ══════════════════════════════════════ */
+.heritage { background: linear-gradient(180deg, var(--bg) 0%, rgba(168,197,184,0.05) 50%, var(--bg) 100%); }
+.heritage-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center;
+}
+.heritage-visual {
+  position: relative; border-radius: var(--r-lg); overflow: hidden;
+  aspect-ratio: 4/3; background: #E8E4DC;
+}
+.heritage-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.heritage-img-before {
+  background: linear-gradient(135deg, #5C4E3C 0%, #4A3F30 40%, #342C22 100%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  color: rgba(255,255,255,0.5); font-family: var(--sans); font-size: 0.8rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.heritage-img-after {
+  background: linear-gradient(135deg, #FAFAF8 0%, #EDE9E0 40%, #D8D0C0 100%);
+  clip-path: inset(0 0 0 50%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  color: rgba(26,31,61,0.4); font-family: var(--sans); font-size: 0.8rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.heritage-slider-line {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+  background: white; z-index: 10; pointer-events: none;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+.heritage-slider-handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 36px; height: 36px; background: white; border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+  cursor: col-resize; z-index: 11;
+  font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em;
+}
+.heritage-label {
+  position: absolute; bottom: 12px; padding: 4px 10px; border-radius: 4px;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  z-index: 5; pointer-events: none;
+}
+.heritage-label-before { left: 12px; background: rgba(0,0,0,0.5); color: white; }
+.heritage-label-after { right: 12px; background: rgba(255,255,255,0.85); color: var(--navy); }
+
+.heritage-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gold-dim); background: var(--gold-glow); padding: 5px 12px;
+  border-radius: 6px; margin-bottom: 16px;
+}
+.heritage-title {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
+}
+.heritage-text { font-size: 0.9rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 24px; }
+.heritage-stats { display: flex; gap: 28px; margin-bottom: 28px; flex-wrap: wrap; }
+.h-stat-val { font-family: var(--mono); font-size: 1.4rem; font-weight: 500; color: var(--navy); }
+.h-stat-label { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+.heritage-quote {
+  padding: 16px 0 0; border-top: 1px solid var(--border);
+  font-family: var(--serif); font-size: 0.95rem; font-style: italic;
+  line-height: 1.6; color: var(--text-soft);
+}
+.heritage-quote cite {
+  display: block; font-style: normal; font-family: var(--sans);
+  font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .heritage-grid { grid-template-columns: 1fr; }
+  .heritage-visual { aspect-ratio: 3/2; }
+}
+
+/* ══════════════════════════════════════
+   IMPACT — Zhao database table
+   ══════════════════════════════════════ */
+.impact-section { background: var(--navy); color: var(--bg); }
+.impact-section .section-tag { color: rgba(250,250,248,0.4); }
+.impact-section .section-tag::before { background: var(--gold); }
+.impact-section .section-title { color: var(--bg); }
+.impact-section .section-desc { color: rgba(250,250,248,0.5); }
+
+.impact-summary { display: flex; gap: clamp(24px, 4vw, 56px); margin-bottom: 40px; flex-wrap: wrap; }
+.impact-big { text-align: center; }
+.impact-num {
+  font-family: var(--mono); font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500; color: var(--gold); letter-spacing: -0.02em;
+}
+.impact-label { font-size: 0.68rem; color: rgba(250,250,248,0.4); margin-top: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* Database table */
+.db-wrap {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--r); overflow: hidden;
+}
+.db-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.db-head-title { font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.db-head-views { display: flex; gap: 2px; }
+.db-view-tab {
+  font-size: 0.68rem; padding: 3px 10px; border-radius: 4px;
+  color: rgba(250,250,248,0.4); font-weight: 500; cursor: pointer; transition: all 0.15s;
+}
+.db-view-tab.active { background: rgba(255,255,255,0.08); color: var(--bg); }
+.db-view-tab:hover { background: rgba(255,255,255,0.04); }
+
+.db-table { width: 100%; border-collapse: collapse; }
+.db-table th {
+  text-align: left; font-size: 0.68rem; font-weight: 500;
+  color: rgba(250,250,248,0.35); padding: 8px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.db-table td {
+  font-size: 0.84rem; padding: 12px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle; color: rgba(250,250,248,0.75);
+}
+.db-table tr:last-child td { border-bottom: none; }
+.db-table tr:hover td { background: rgba(255,255,255,0.02); }
+.db-val { font-family: var(--mono); font-weight: 500; color: var(--gold); font-size: 0.82rem; }
+.db-tag {
+  display: inline-flex; font-size: 0.65rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px;
+}
+.db-tag-blue { background: rgba(59,130,246,0.15); color: #60A5FA; }
+.db-tag-green { background: rgba(34,197,94,0.15); color: #4ADE80; }
+.db-tag-red { background: rgba(232,93,58,0.15); color: #F87171; }
+.db-tag-orange { background: rgba(232,184,48,0.15); color: var(--gold); }
+.db-tag-purple { background: rgba(155,81,224,0.15); color: #C084FC; }
+
+.db-more {
+  padding: 12px 20px; font-size: 0.75rem; color: rgba(250,250,248,0.3);
+}
+
+@media (max-width: 600px) {
+  .db-table { font-size: 0.75rem; }
+  .db-table th, .db-table td { padding: 8px 12px; }
+  .db-table .hide-mobile { display: none; }
+}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS — stacked, not carousel
+   ══════════════════════════════════════ */
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px,100%), 1fr)); gap: 16px;
+}
+.t-card {
+  background: var(--bg-pure); border-radius: var(--r); padding: 28px 24px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--spring);
+}
+.t-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.t-quote {
+  font-family: var(--serif); font-size: 0.98rem; font-style: italic;
+  line-height: 1.6; color: var(--text); margin-bottom: 16px;
+}
+.t-meta { display: flex; align-items: center; gap: 12px; }
+.t-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gold-glow); display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--gold-dim);
+}
+.t-name { font-size: 0.82rem; font-weight: 600; }
+.t-role { font-size: 0.72rem; color: var(--text-muted); margin-top: 1px; }
+.t-install {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--mono); font-size: 0.65rem; color: var(--gold-dim);
+  background: var(--gold-glow); padding: 3px 8px; border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* ══════════════════════════════════════
+   CTA — Photo upload + form + WhatsApp
+   ══════════════════════════════════════ */
+.cta-section { padding: clamp(64px, 10vw, 100px) 0; }
+.cta-card {
+  background: var(--bg-pure); border-radius: var(--r-lg); padding: clamp(32px, 5vw, 56px);
+  border: 1px solid var(--border); box-shadow: var(--shadow-md);
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 56px);
+}
+.cta-title {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400; line-height: 1.2; margin-bottom: 12px;
+}
+.cta-text { font-size: 0.9rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 24px; }
+
+/* Photo upload area */
+.cta-upload {
+  border: 2px dashed var(--border-strong); border-radius: var(--r);
+  padding: 28px; text-align: center; margin-bottom: 20px;
+  transition: border-color 0.3s, background 0.3s; cursor: pointer;
+}
+.cta-upload:hover { border-color: var(--gold); background: var(--gold-glow); }
+.cta-upload-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.cta-upload-text { font-size: 0.82rem; color: var(--text-soft); }
+.cta-upload-text strong { color: var(--gold-dim); }
+
+.cta-or {
+  text-align: center; font-size: 0.72rem; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px;
+}
+
+.cta-wa-big {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 14px; font-size: 0.88rem; font-weight: 600;
+  background: #25D366; color: white; border-radius: 12px;
+  transition: all 0.4s var(--spring);
+  box-shadow: 0 4px 16px rgba(37,211,102,0.2);
+}
+.cta-wa-big:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.3); }
+.cta-wa-big svg { width: 20px; height: 20px; fill: white; }
+
+.cta-phones {
+  display: flex; gap: 16px; margin-top: 16px; justify-content: center;
+}
+.cta-phones a {
+  font-family: var(--mono); font-size: 0.78rem; color: var(--text-muted);
+  transition: color 0.2s;
+}
+.cta-phones a:hover { color: var(--navy); }
+
+/* Form side */
+.cta-form { display: flex; flex-direction: column; gap: 10px; }
+.cta-form input, .cta-form select, .cta-form textarea {
+  width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 0.85rem;
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px;
+  color: var(--text); outline: none; transition: border-color 0.3s;
+}
+.cta-form input:focus, .cta-form select:focus, .cta-form textarea:focus { border-color: var(--gold); }
+.cta-form textarea { resize: vertical; min-height: 80px; }
+.cta-form select { -webkit-appearance: none; }
+.cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cta-submit {
+  padding: 14px; width: 100%; font-size: 0.88rem; font-weight: 600;
+  background: var(--gold); color: var(--navy); border-radius: 10px;
+  transition: all 0.4s var(--spring);
+  box-shadow: 0 2px 10px rgba(232,184,48,0.2);
+}
+.cta-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,184,48,0.3); }
+
+@media (max-width: 900px) {
+  .cta-card { grid-template-columns: 1fr; }
+  .cta-form-row { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+.footer {
+  padding: 48px 0 120px; border-top: 1px solid var(--border);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand-name {
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.footer-brand-name span { font-weight: 300; }
+.footer-brand-desc { font-size: 0.82rem; color: var(--text-soft); line-height: 1.6; max-width: 280px; }
+.footer-col-title {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; font-size: 0.82rem; color: var(--text-soft);
+  padding: 4px 0; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--navy); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+  font-size: 0.72rem; color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer { padding-bottom: 100px; }
+}
+
+/* ══════════════════════════════════════
+   STICKY MOBILE BAR
+   ══════════════════════════════════════ */
+.mobile-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--navy); z-index: 300;
+  padding: 0; safe-area: env(safe-area-inset-bottom);
+}
+.mobile-bar-inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+}
+.mb-btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 14px 8px; font-size: 0.72rem; font-weight: 600;
+  color: rgba(250,250,248,0.7); text-align: center;
+  transition: background 0.2s; letter-spacing: 0.02em;
+}
+.mb-btn:hover { background: rgba(255,255,255,0.06); }
+.mb-btn svg { width: 18px; height: 18px; }
+.mb-btn-wa { background: #25D366; color: white; }
+.mb-btn-wa:hover { background: #22C35E; }
+
+@media (max-width: 900px) { .mobile-bar { display: block; } }
+
+/* ══════════════════════════════════════
+   DESKTOP WHATSAPP FLOAT
+   ══════════════════════════════════════ */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 250;
+  width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+  transition: all 0.4s var(--spring);
+}
+.wa-float:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+.wa-float svg { width: 28px; height: 28px; fill: white; }
+@media (max-width: 900px) { .wa-float { display: none; } }
+
+/* ══════════════════════════════════════
+   REVEAL
+   ══════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s var(--smooth); }
+.reveal.vis { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; } .reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; } .reveal-d4 { transition-delay: 0.32s; }
+</style>
+</head>
+<body>
+
+<!-- ══════ NAVIGATION ══════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="8" x2="20" y2="32"/><polyline points="8,14 14,20 8,26"/><polyline points="32,14 26,20 32,26"/></svg>
+      </div>
+      The HVAC <span>Studio</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#products">Solutions</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#impact">Impact</a>
+      <a href="#testimonials">Voices</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta nav-cta-desktop">Get Assessment</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag"><span class="hero-tag-dot"></span> Engineering air since 2000</div>
+        <h1 class="hero-title">We engineer<br>how <em>air</em> moves.</h1>
+        <p class="hero-sub">Ventilation, conditioning, and automation for heritage churches, Amazon warehouses, and every space that matters between.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20learning%20about%20your%20HVAC%20solutions." class="btn-wa" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp Us
+          </a>
+          <a href="#heritage" class="btn-secondary">See Our Work</a>
+        </div>
+      </div>
+      <div class="hero-fan">
+        <div class="fan-container">
+          <div class="fan-ring fan-ring-1"></div>
+          <div class="fan-ring fan-ring-2"></div>
+          <svg class="fan-svg" viewBox="0 0 500 500" fill="none">
+            <g id="fanBlades">
+              <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.78" transform="rotate(0 250 250)"/>
+              <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.70" transform="rotate(72 250 250)"/>
+              <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.62" transform="rotate(144 250 250)"/>
+              <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.54" transform="rotate(216 250 250)"/>
+              <path d="M250 250 C242 228,234 175,236 115 C237 85,244 68,250 68 C256 68,263 85,264 115 C266 175,258 228,250 250Z" fill="var(--navy)" opacity="0.46" transform="rotate(288 250 250)"/>
+            </g>
+            <circle cx="250" cy="250" r="20" fill="var(--navy)"/>
+            <circle cx="250" cy="250" r="7" fill="var(--gold)" opacity="0.9"/>
+          </svg>
+          <div class="fan-hint">Move cursor to spin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CLIENTS ══════ -->
+<section class="clients">
+  <div class="clients-track" id="ct">
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span><span class="cl-stat">15,000+ MW Saved</span>
+    <span class="cl">Chhatrapati Shivaji Airport</span><span class="cl">Taj Hotels</span><span class="cl">Amazon</span><span class="cl">Raymond</span><span class="cl">Croma · Tata</span><span class="cl">Mahindra</span><span class="cl">Mercedes-Benz</span><span class="cl">Pfizer</span><span class="cl">McDonald's</span><span class="cl">Sofitel</span><span class="cl">CommScope</span><span class="cl">DoubleTree</span><span class="cl-stat">15,000+ MW Saved</span>
+  </div>
+</section>
+
+<!-- ══════ PRODUCTS ══════ -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-tag reveal">Solutions</div>
+    <h2 class="section-title reveal">Five ways we <em>move air.</em></h2>
+    <p class="section-desc reveal">We don't just sell fans. We design how air behaves in your space — then engineer the system to make it happen.</p>
+    <div class="products-grid">
+      <div class="p-card reveal reveal-d1" data-tilt>
+        <span class="p-card-icon">🌀</span>
+        <h3 class="p-card-name">HVLS Fans</h3>
+        <p class="p-card-desc">8ft to 24ft fans that replace dozens of ceiling fans with one silent, elegant solution. Less than 0.25 W/sqft.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+      <div class="p-card reveal reveal-d2" data-tilt>
+        <span class="p-card-icon">❄️</span>
+        <h3 class="p-card-name">Air Conditioning</h3>
+        <p class="p-card-desc">High-wall, ductable, cassette — designed for your space, your budget, and your aesthetic.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+      <div class="p-card reveal reveal-d3" data-tilt>
+        <span class="p-card-icon">💨</span>
+        <h3 class="p-card-name">Ventilation & Exhaust</h3>
+        <p class="p-card-desc">Mechanised ventilation, roof extractors, and aesthetic duct design for engineered airflow.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+      <div class="p-card reveal reveal-d4" data-tilt>
+        <span class="p-card-icon">☀️</span>
+        <h3 class="p-card-name">Solar & Hybrid</h3>
+        <p class="p-card-desc">Zero frontal investment. Hybrid panels cut AC compressor load by half. On-grid and off-grid.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+      <div class="p-card reveal reveal-d4" data-tilt>
+        <span class="p-card-icon">🏗️</span>
+        <h3 class="p-card-name">Interior Design</h3>
+        <p class="p-card-desc">Architects, designers, and fit-out specialists. Handshake to handover.</p>
+        <a href="#" class="p-card-link">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ HERITAGE ══════ -->
+<section class="section heritage" id="heritage">
+  <div class="container">
+    <div class="heritage-grid">
+      <div class="heritage-visual reveal" id="heritageVisual">
+        <div class="heritage-img heritage-img-before">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <span style="margin-top:8px;">55 Ceiling Fans · 5.5 kW</span>
+        </div>
+        <div class="heritage-img heritage-img-after" id="afterImg">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <span style="margin-top:8px;">2 HVLS Fans · 2.8 kW · 50% Saved</span>
+        </div>
+        <div class="heritage-slider-line" id="sliderLine"></div>
+        <div class="heritage-slider-handle" id="sliderHandle">⟷</div>
+        <span class="heritage-label heritage-label-before">Before</span>
+        <span class="heritage-label heritage-label-after">After</span>
+      </div>
+      <div class="reveal">
+        <div class="heritage-badge">🏛️ India's Only Heritage HVLS Experts</div>
+        <h2 class="heritage-title">Where engineering<br>meets <em>reverence.</em></h2>
+        <p class="heritage-text">Heritage churches present two critical challenges: roofs that can't bear loads, and aesthetics that can't be compromised. We've solved both — 25 times.</p>
+        <div class="heritage-stats">
+          <div><div class="h-stat-val" data-count="25">0</div><div class="h-stat-label">Heritage Installs</div></div>
+          <div><div class="h-stat-val" data-count="50" data-suffix="%">0</div><div class="h-stat-label">Energy Saved</div></div>
+          <div><div class="h-stat-val" data-count="70" data-suffix="%">0</div><div class="h-stat-label">Noise Reduced</div></div>
+        </div>
+        <div class="heritage-quote">
+          "We believed what was promised and I must say, our hopes were fulfilled. We were pioneers when we decided to install these fans."
+          <cite>Fr. Cleophas Fernandes — St. Pius X Church, Mulund</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ IMPACT — Zhao database ══════ -->
+<section class="section impact-section" id="impact">
+  <div class="container">
+    <div class="section-tag reveal">Impact</div>
+    <h2 class="section-title reveal">Numbers that <em>breathe.</em></h2>
+    <p class="section-desc reveal">Measurable outcomes from real installations. Not estimates — actuals.</p>
+
+    <div class="impact-summary reveal">
+      <div class="impact-big"><div class="impact-num" data-count="15000">0</div><div class="impact-label">Mega Watts Saved</div></div>
+      <div class="impact-big"><div class="impact-num" data-count="100" data-suffix="%">0</div><div class="impact-label">Client Satisfaction</div></div>
+      <div class="impact-big"><div class="impact-num" data-count="25" data-suffix="+">0</div><div class="impact-label">Years Experience</div></div>
+    </div>
+
+    <div class="db-wrap reveal">
+      <div class="db-head">
+        <div class="db-head-title">📊 Client Impact</div>
+        <div class="db-head-views">
+          <span class="db-view-tab active">Table</span>
+          <span class="db-view-tab">Board</span>
+          <span class="db-view-tab">Gallery</span>
+        </div>
+      </div>
+      <table class="db-table">
+        <thead><tr>
+          <th>Client</th><th>Solution</th><th>Energy Saved</th><th class="hide-mobile">Impact</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Chhatrapati Shivaji Airport</td><td><span class="db-tag db-tag-blue">Hybrid HVAC</span></td><td><span class="db-val">876 MW/yr</span></td><td class="hide-mobile">150 TR AC load saved</td></tr>
+          <tr><td>Amazon</td><td><span class="db-tag db-tag-red">HVLS + Coolers</span></td><td><span class="db-val">300+ MW/yr</span></td><td class="hide-mobile">Per-facility cooling</td></tr>
+          <tr><td>Mahindra</td><td><span class="db-tag db-tag-green">Solar + Hybrid</span></td><td><span class="db-val">226 MW/yr</span></td><td class="hide-mobile">50% AC load reduction</td></tr>
+          <tr><td>Raymond</td><td><span class="db-tag db-tag-orange">Solar Rooftop</span></td><td><span class="db-val">700 MW/yr</span></td><td class="hide-mobile">50% energy cost cut</td></tr>
+          <tr><td>Croma · Tata</td><td><span class="db-tag db-tag-purple">De-Stratification</span></td><td><span class="db-val">16 MW/yr</span></td><td class="hide-mobile">Per-store savings</td></tr>
+          <tr><td>Taj Hotels</td><td><span class="db-tag db-tag-blue">Air Handling</span></td><td>—</td><td class="hide-mobile">Guest comfort focus</td></tr>
+        </tbody>
+      </table>
+      <div class="db-more">Also serving: Mercedes-Benz · Pfizer · McDonald's · Sofitel · CommScope · DoubleTree · Rosenberger · Trent Ltd</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TESTIMONIALS — stacked ══════ -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-tag reveal">Voices</div>
+    <h2 class="section-title reveal">From the people who <em>worship</em> in our spaces.</h2>
+    <p class="section-desc reveal">Real testimonials from parish priests who trusted us with their sacred spaces.</p>
+    <div class="testimonials-grid">
+      <div class="t-card reveal reveal-d1">
+        <p class="t-quote">"We believed what was promised and I must say, our hopes were fulfilled. We were pioneers when we decided to install these fans."</p>
+        <div class="t-meta">
+          <div class="t-avatar">CF</div>
+          <div><div class="t-name">Fr. Cleophas Fernandes</div><div class="t-role">Former Parish Priest · St. Pius X Church, Mulund</div></div>
+        </div>
+        <div class="t-install">2 × 16ft HVLS → replaced 55 ceiling fans</div>
+      </div>
+      <div class="t-card reveal reveal-d2">
+        <p class="t-quote">"I recommend that every Church, School Auditorium or Parish Hall install these. They look elegant, save energy and do away with multiple ceiling fans."</p>
+        <div class="t-meta">
+          <div class="t-avatar">FD</div>
+          <div><div class="t-name">Fr. Felix D'Souza</div><div class="t-role">Former Parish Priest · St. Anthony Church, Vakola</div></div>
+        </div>
+        <div class="t-install">Heritage installation · 50% energy reduction</div>
+      </div>
+      <div class="t-card reveal reveal-d3">
+        <p class="t-quote">"The process was seamless with minimum interference to church services and within the agreed timeline. Their after sales service has been prompt and reliable."</p>
+        <div class="t-meta">
+          <div class="t-avatar">RC</div>
+          <div><div class="t-name">Fr. Rui Comelo</div><div class="t-role">Parish Priest · Our Lady of Egypt, Kalina</div></div>
+        </div>
+        <div class="t-install">Full heritage installation · on-time delivery</div>
+      </div>
+      <div class="t-card reveal reveal-d4">
+        <p class="t-quote">"We have been so satisfied that we installed another 16ft HVLS fan in our Auditorium. The workmanship is quite professional and done within the specified time frame."</p>
+        <div class="t-meta">
+          <div class="t-avatar">BP</div>
+          <div><div class="t-name">Fr. Bernard Lancy Pinto</div><div class="t-role">Parish Priest · Infant Jesus Church, Nashik</div></div>
+        </div>
+        <div class="t-install">Repeat customer · 2 installations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div>
+        <h2 class="cta-title">Tell us about<br>your <em>space.</em></h2>
+        <p class="cta-text">Snap a photo, describe what you need — we'll recommend the right solution within 24 hours. Or just WhatsApp us.</p>
+
+        <div class="cta-upload" onclick="document.getElementById('fileInput').click()">
+          <div class="cta-upload-icon">📸</div>
+          <div class="cta-upload-text"><strong>Tap to upload a photo</strong> of your space<br>or drag and drop here</div>
+          <input type="file" id="fileInput" accept="image/*" style="display:none">
+        </div>
+
+        <div class="cta-or">— or —</div>
+
+        <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20learning%20about%20your%20HVAC%20solutions." class="cta-wa-big" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="white"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" fill="white"/></svg>
+          WhatsApp Us Your Space
+        </a>
+
+        <div class="cta-phones">
+          <a href="tel:+919819040201">+91 9819 040 201</a>
+          <a href="tel:+919011699749">+91 9011 699 749</a>
+        </div>
+      </div>
+      <form class="cta-form" onsubmit="event.preventDefault()">
+        <div class="cta-form-row">
+          <input type="text" placeholder="Your name" required>
+          <input type="tel" placeholder="Phone number" required>
+        </div>
+        <select required><option value="" disabled selected>Type of space</option><option>Church / Place of Worship</option><option>Warehouse / Factory</option><option>Hotel / Hospitality</option><option>Retail / Showroom</option><option>Office / Commercial</option><option>School / Institution</option><option>Other</option></select>
+        <input type="text" placeholder="Approximate area (sq ft)">
+        <textarea placeholder="Tell us what you need..."></textarea>
+        <button type="submit" class="cta-submit">Get Free Assessment →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">The HVAC <span>Studio</span></div>
+        <p class="footer-brand-desc">We clean, condition, and move air in the quietest way possible — so you can focus on the more important things.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Solutions</div>
+        <a href="#">HVLS Fans</a><a href="#">Air Conditioning</a><a href="#">Ventilation</a><a href="#">Solar & Hybrid</a><a href="#">Interior Design</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="#">Heritage Expertise</a><a href="#">Case Studies</a><a href="#">About Us</a><a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="tel:+919819040201">+91 9819 040 201</a>
+        <a href="tel:+919011699749">+91 9011 699 749</a>
+        <a href="https://wa.me/919819040201" target="_blank">WhatsApp</a>
+        <a href="mailto:info@thehvacstudio.com">Email</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The HVAC Studio · Mumbai, India</span>
+      <span>Engineered Calm.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════ STICKY MOBILE BAR ══════ -->
+<div class="mobile-bar">
+  <div class="mobile-bar-inner">
+    <a href="tel:+919819040201" class="mb-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call
+    </a>
+    <a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20your%20HVAC%20solutions." class="mb-btn mb-btn-wa" target="_blank">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+    <a href="#contact" class="mb-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12h6M12 9v6"/></svg>
+      Get Quote
+    </a>
+  </div>
+</div>
+
+<!-- ══════ DESKTOP WHATSAPP FLOAT ══════ -->
+<a href="https://wa.me/919819040201?text=Hi%2C%20I%27m%20interested%20in%20your%20HVAC%20solutions." class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 01-5.39-1.583l-.387-.232-3.35 1.123 1.123-3.35-.232-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+// ── Nav ──
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }));
+
+// ── Fan — cursor + scroll reactive ──
+const blades = document.getElementById('fanBlades');
+blades.style.transformOrigin = '50% 50%';
+blades.style.transformBox = 'view-box';
+let rot = 0, spd = 0.18, tgt = 0.18, sV = 0, mV = 0, pS = 0, pMX = 0, pMY = 0;
+function tick() {
+  tgt = 0.18 + Math.abs(sV) * 0.12 + mV * 0.07;
+  tgt = Math.min(tgt, 8);
+  spd += (tgt - spd) * 0.06;
+  sV *= 0.93; mV *= 0.91;
+  rot += spd;
+  blades.style.transform = `rotate(${rot}deg)`;
+  requestAnimationFrame(tick);
+}
+tick();
+window.addEventListener('scroll', () => { sV = scrollY - pS; pS = scrollY; }, { passive: true });
+document.addEventListener('mousemove', e => {
+  const r = document.querySelector('.fan-svg')?.getBoundingClientRect();
+  if (!r) return;
+  const dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+  const d = Math.sqrt(dx*dx + dy*dy), rad = Math.max(r.width, 380);
+  if (d < rad) { const p = 1-d/rad; mV = Math.max(mV, Math.sqrt((e.clientX-pMX)**2+(e.clientY-pMY)**2)*p); }
+  pMX = e.clientX; pMY = e.clientY;
+});
+
+// ── 3D tilt cards ──
+document.querySelectorAll('[data-tilt]').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width-0.5, y = (e.clientY-r.top)/r.height-0.5;
+    c.style.transform = `perspective(700px) rotateY(${x*6}deg) rotateX(${-y*6}deg) scale(1.02)`;
+    c.style.transition = 'none';
+  });
+  c.addEventListener('mouseleave', () => { c.style.transform = ''; c.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)'; });
+});
+
+// ── Heritage slider ──
+const visual = document.getElementById('heritageVisual');
+const afterImg = document.getElementById('afterImg');
+const sliderLine = document.getElementById('sliderLine');
+const sliderHandle = document.getElementById('sliderHandle');
+let dragging = false;
+function setSlider(x) {
+  const r = visual.getBoundingClientRect();
+  let pct = ((x - r.left) / r.width) * 100;
+  pct = Math.max(5, Math.min(95, pct));
+  afterImg.style.clipPath = `inset(0 0 0 ${pct}%)`;
+  sliderLine.style.left = pct + '%';
+  sliderHandle.style.left = pct + '%';
+}
+sliderHandle.addEventListener('mousedown', () => dragging = true);
+sliderHandle.addEventListener('touchstart', () => dragging = true, { passive: true });
+window.addEventListener('mouseup', () => dragging = false);
+window.addEventListener('touchend', () => dragging = false);
+window.addEventListener('mousemove', e => { if (dragging) setSlider(e.clientX); });
+window.addEventListener('touchmove', e => { if (dragging) setSlider(e.touches[0].clientX); }, { passive: true });
+
+// ── Reveal ──
+const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }), { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── Counter animation ──
+function animNum(el) {
+  const t = +el.dataset.count, suffix = el.dataset.suffix || '+', dur = 1600, s = performance.now();
+  function u(n) {
+    const p = Math.min((n-s)/dur,1), e = 1-Math.pow(1-p,3);
+    el.textContent = Math.floor(e*t).toLocaleString() + (p>=1 ? suffix : '');
+    if (p<1) requestAnimationFrame(u);
+  }
+  requestAnimationFrame(u);
+}
+const co = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting && !e.target.dataset.done) { e.target.dataset.done=1; animNum(e.target); }
+}), { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+</script>
+</body>
+</html>
